@@ -1,0 +1,8 @@
+Types: deb
+URIs: https://apt.puppet.com/
+# See suit in https://apt.puppet.com/dists/focal/InRelease
+Suites: focal
+# See Components in https://apt.puppet.com/dists/focal/InRelease
+Components: puppet puppet5 puppet6 puppet6-release puppet7 puppet-release puppet-tools
+Signed-By: /usr/share/keyrings/puppet-release-4528B6CD9E61EF26.pub.gpg
+Architectures: amd64
