@@ -1,5 +1,5 @@
-class libs::sys_users::dimanne {
-   @user {'dimanne':
+class libs::sys_users::yulia {
+   @user {'yulia':
       ensure => present,
       tag    => [sudo, docker],
    }
