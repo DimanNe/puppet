@@ -23,16 +23,12 @@ include libs::pkgs::chrome
 include libs::pkgs::chrome_beta
 include libs::pkgs::build_py_deps
 include libs::pkgs::secboot_unified_py_deps
-include libs::pkgs::yu
 include libs::pkgs::yu_luks
+include libs::pkgs::yu_sudo
 include libs::pkgs::yu_smart
+include libs::pkgs::yu_other
 
 include libs::tunables::nofile
 include libs::tunables::inotify
-
-class { libs::tunables::pages_1G:
-  n => 24,
-}
-class { libs::tunables::governor:
-  value => "performance",
-}
+class { libs::tunables::pages_1G: n     => 24 }
+class { libs::tunables::governor: value => "performance" }
