@@ -1,0 +1,22 @@
+Enabled: yes
+Types: deb
+URIs: https://nvidia.github.io/libnvidia-container/stable/ubuntu18.04/$(ARCH)
+Suites: /
+# Components:
+Signed-By: /usr/share/keyrings/nvidia_cudatools.gpg
+Architectures: amd64
+Enabled: yes
+
+Types: deb
+URIs: https://nvidia.github.io/nvidia-container-runtime/stable/ubuntu18.04/$(ARCH)
+Suites: /
+# Components:
+Signed-By: /usr/share/keyrings/nvidia_cudatools.gpg
+Architectures: amd64
+
+Types: deb
+URIs: https://nvidia.github.io/nvidia-docker/ubuntu18.04/$(ARCH)
+Suites: /
+# Components:
+Signed-By: /usr/share/keyrings/nvidia_cudatools.gpg
+Architectures: amd64

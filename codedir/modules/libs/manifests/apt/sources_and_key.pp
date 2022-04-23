@@ -1,4 +1,4 @@
-class libs::apt::sources_and_key(
+define libs::apt::sources_and_key(
    String $sources_path,
    String $gpg_bin_key_path,
 ) {
@@ -11,22 +11,21 @@ class libs::apt::sources_and_key(
    warning("Source file: ${sources_path} new destination: ${sources_dst_path}")
    warning("Gpg key: ${gpg_bin_key_path} new destination: ${gpg_bin_key_dst_path}")
 
-   file { "$key_dir"    : ensure => directory }
-   file { "$sources_dir": ensure => directory }
-
+   require ::libs::apt::ctor
    include ::libs::apt::update
 
+   file { $gpg_bin_key_dst_path:
+      mode => "0644",
+      owner => 'root',
+      group => 'root',
+      source => $gpg_bin_key_path,
+   }
    file { $sources_dst_path:
       mode => "0644",
       owner => 'root',
       group => 'root',
       source => $sources_path,
       notify => Class['libs::apt::update'],
-   }
-   file { $gpg_bin_key_dst_path:
-      mode => "0644",
-      owner => 'root',
-      group => 'root',
-      source => $gpg_bin_key_path,
+      require => File[$gpg_bin_key_dst_path],
    }
 }
