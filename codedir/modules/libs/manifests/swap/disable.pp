@@ -7,7 +7,7 @@ class libs::swap::disable {
 
    exec { 'comment swap entries in fstab':
       #                                         /dev/... none    swap ...
-      command     => "/usr/bin/sed -i -E '/^\s*\/[^ ]+\s+[^ ]+\s+swap\s+[^ ]+.*$/s/^/### (commented by puppet): ### /g' /etc/fstab", # https://gist.github.com/haisum/4fcd9146b6c972d0d3ca
+      command     => "/usr/bin/sed -i -E '/^\s*\\/[^ ]+\s+[^ ]+\s+swap\s+[^ ]+.*$/s/^/### (commented by puppet): ### /g' /etc/fstab", # https://gist.github.com/haisum/4fcd9146b6c972d0d3ca
       logoutput   => true,
       tries       => 1,
    }
