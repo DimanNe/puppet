@@ -1,0 +1,8 @@
+[Unit]
+Description=Play Silence
+
+[Service]
+ExecStart=%h/.config/systemd/user/silence.sh
+
+[Install]
+WantedBy=default.target

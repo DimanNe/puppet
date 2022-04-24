@@ -8,7 +8,5 @@ class libs::pkgs::nvidia_docker {
       ensure => present,
       provider => apt,
       require => Libs::Apt::Sources_and_key[nvidia_docker]
-   }
-
-   User <| tag == docker |> { groups +> "docker" } # Collect all virtual users with tag sudo and add "sudo" group to the list of groups
+   } -> User <| tag == docker |> { groups +> "docker" } # Collect all virtual users with tag sudo and add "sudo" group to the list of groups
 }

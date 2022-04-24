@@ -11,21 +11,24 @@ define libs::apt::sources_and_key(
    warning("Source file: ${sources_path} new destination: ${sources_dst_path}")
    warning("Gpg key: ${gpg_bin_key_path} new destination: ${gpg_bin_key_dst_path}")
 
-   require ::libs::apt::ctor
-   include ::libs::apt::update
+   require ::libs::apt::ctor   # libs::apt::ctor is executed (1) once, and (2) before all the code below
+   contain ::libs::apt::update # "contain" makes sure that the surrounding code, like
+                               #    libs::apt::sources_and_key {'chrome': ...}
+                               #    package { chrome: ..., require => Libs::Apt::Sources_and_key['google-chrome'] }
+                               # is executed not only after Libs::Apt::Sources_and_key, but also, after libs::apt::update (which does apt update)
 
    file { $gpg_bin_key_dst_path:
-      mode => "0644",
-      owner => 'root',
-      group => 'root',
+      ensure => file,
+      mode   => "0644",
+      owner  => 'root',
+      group  => 'root',
       source => $gpg_bin_key_path,
-   }
-   file { $sources_dst_path:
+   } -> file { $sources_dst_path:
+      ensure => file,
       mode => "0644",
       owner => 'root',
       group => 'root',
       source => $sources_path,
       notify => Class['libs::apt::update'],
-      require => File[$gpg_bin_key_dst_path],
    }
 }

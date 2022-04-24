@@ -1,17 +1,18 @@
 # $devel_dir = "\$HOME/devel"
 # warning("Devel dir: ${devel_dir}")
 
+class { 'systemd': # Needed by libs::multiseat::u2f which adds udev::rule
+  manage_udevd  => true,
+}
+
 include libs::sys_users::dimanne
 include libs::sys_users::yulia
+include libs::users::dimanne
 include libs::sudo::enroll_eligible_users
 
-# include libs::multiseat::webcam
-# include libs::multiseat::sound
-# include libs::multiseat::u2f
-# include libs::silence
-
-# class { libs::users::dimanne: devel_dir => $devel_dir}
-# class { libs::users::yulia: devel_dir => $devel_dir}
+include libs::multiseat::sound
+include libs::multiseat::webcam
+include libs::multiseat::u2f
 
 include libs::swap::disable
 
@@ -33,3 +34,7 @@ include libs::tunables::nofile
 include libs::tunables::inotify
 # class { libs::tunables::huge_pages: gib => 24 }
 # class { libs::tunables::cpupower: governor => "performance" }
+
+
+# sudo -i puppet config set --section main daemonize false &&
+# sudo -i puppet config set --section main onetime true
