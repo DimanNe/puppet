@@ -15,6 +15,7 @@ include libs::sys_users::dimanne
 include libs::sys_users::yulia
 include libs::sudo::enroll_eligible_users
 include libs::users::dimanne
+include libs::users::yulia
 
 include libs::multiseat::sound
 include libs::multiseat::webcam

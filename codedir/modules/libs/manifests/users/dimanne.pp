@@ -28,4 +28,6 @@ class libs::users::dimanne {
       timeout   => 10,
       tries     => 1,
    }
+
+   libs::fonts::noto_colour_emoji {$username: }
 }
