@@ -25,6 +25,7 @@ include libs::swap::disable
 
 include libs::pkgs::gui
 include libs::pkgs::cli
+include libs::pkgs::kubernetes
 include libs::pkgs::build_py_deps
 include libs::pkgs::nvidia_docker
 include libs::pkgs::secboot_unified_py_deps

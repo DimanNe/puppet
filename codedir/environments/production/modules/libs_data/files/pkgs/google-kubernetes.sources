@@ -1,0 +1,7 @@
+Enabled: yes
+Types: deb
+URIs: https://apt.kubernetes.io/
+Suites: kubernetes-xenial
+Components: main
+Signed-By: /usr/share/keyrings/google-cloud-rapture.gpg
+Architectures: amd64
