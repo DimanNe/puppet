@@ -26,6 +26,7 @@ include libs::swap::disable
 include libs::pkgs::gui
 include libs::pkgs::cli
 include libs::pkgs::kubernetes
+include libs::pkgs::helm
 include libs::pkgs::build_py_deps
 include libs::pkgs::nvidia_docker
 include libs::pkgs::secboot_unified_py_deps
@@ -40,7 +41,7 @@ class { libs::pkgs::yubikey:
 
 include libs::tunables::nofile
 include libs::tunables::inotify
-class { libs::tunables::huge_pages: gib => 24 }
+class { libs::tunables::huge_pages: gib => 12 }
 class { libs::tunables::cpupower: governor => "performance" }
 
 
