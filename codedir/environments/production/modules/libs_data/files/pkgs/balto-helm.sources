@@ -1,0 +1,7 @@
+Enabled: yes
+Types: deb
+URIs: https://baltocdn.com/helm/stable/debian/
+Suites: all
+Components: main
+Signed-By: /usr/share/keyrings/balto-helm.gpg
+Architectures: amd64
